@@ -27,7 +27,7 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    // Controls (now loaded synchronously)
+    // Controls
     let controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
 
@@ -36,9 +36,9 @@
     light.position.set(1, 1, 1).normalize();
     scene.add(light);
 
-    // Use global PLYLoader, not THREE.PLYLoader
+    // Use correct path for model in repo root
     let loader = new PLYLoader();
-    loader.load('models/angel-with-candlestick.compressed.ply', function (geometry) {
+    loader.load('angel-with-candlestick.compressed.ply', function (geometry) {
       geometry.computeVertexNormals();
       let material = new THREE.MeshStandardMaterial({ color: 0xcccccc, flatShading: false });
       let mesh = new THREE.Mesh(geometry, material);
